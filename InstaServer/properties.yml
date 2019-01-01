@@ -1,0 +1,7 @@
+mysql:
+  user: root
+  password: r8tOqyrzepdbEsji
+  host: mysql.statsmc.net
+  db: insta
+listenPort: 1900
+debug: false

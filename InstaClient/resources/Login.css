@@ -1,0 +1,59 @@
+.root {
+  display: block;
+  // -fx-background-color:  linear-gradient( #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+ 
+}
+#bg {
+	-fx-background-color:  linear-gradient( #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+}
+
+ 
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+ 
+}
+
+#white {
+	-fx-text-fill: white;
+}
+ 
+#welcome-text {
+   -fx-font-size: 32px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: #818181;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+ 
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    // -fx-background-color: linear-gradient( #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+   
+}
+
+.button #dbutton {
+	#round-red {
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+}
+}
+ 
+.title-bar {
+  -fx-padding: 10px;
+  -fx-background-color: darkgreen;
+ }
+ 
+ .title-bar Label {
+  -fx-text-fill: white;
+}
+
+#table .table-column {
+  -fx-alignment: CENTER;
+}
