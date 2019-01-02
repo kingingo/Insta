@@ -1,3 +1,3 @@
-server: server.statsmc.net
+server: localhost
 port: 1900
 debug: false

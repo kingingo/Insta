@@ -30,6 +30,7 @@ import java.net.UnknownHostException;
 
 import javax.net.SocketFactory;
 
+import net.insta.base.InstaBase;
 import net.insta.base.client.Client;
 import net.insta.server.connection.User;
 
@@ -57,8 +58,6 @@ public class CustomSocketFactory extends SocketFactory implements Runnable {
 		this.thread.start();
 	}
 
-	
-	
 	@Override
 	public void run() {
 		printf("ProxyServer started...");
@@ -68,6 +67,7 @@ public class CustomSocketFactory extends SocketFactory implements Runnable {
 			SocksSocket socket;
 			while (active) {
 				socket = (SocksSocket) listen.accept();
+				InstaBase.debug("proxy connected");
 				socket.connectV4(new InetSocketAddress("instagram.com", 443));
 				printf(socket.getInetAddress().getHostAddress() + " connected  ");
 				add(socket);
@@ -118,6 +118,7 @@ public class CustomSocketFactory extends SocketFactory implements Runnable {
 
 	public Socket createSocket(String host, int port) throws IOException, UnknownHostException {
 		Proxy proxy = (Proxy) get(host);
+		InstaBase.debug("Proxy required and found");
 		return proxy.acquire(this.listen);
 	}
 
