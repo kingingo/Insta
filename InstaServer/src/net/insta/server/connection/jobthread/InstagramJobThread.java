@@ -65,7 +65,7 @@ public class InstagramJobThread implements Runnable {
 					.proxy(proxyTest)
 					.addNetworkInterceptor(loggingInterceptor)
 					.addInterceptor(new ErrorInterceptor())
-	                .addInterceptor(new UserAgentInterceptor(UserAgents.WIN10_FIREFOX))
+	                .addInterceptor(new UserAgentInterceptor(UserAgents.ANDROID_7_0))
 					.cookieJar(new DefaultCookieJar(new CookieHashSet()))
 					.build();
 			
@@ -90,7 +90,7 @@ public class InstagramJobThread implements Runnable {
 		this.active = false;
 		this.queue.clear();
 		this.thread.stop();
-		this.thread=new Thread(this);
+//		this.thread=new Thread(this);
 	}
 
 	public void add(Callback<Instagram> callback) {

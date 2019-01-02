@@ -209,6 +209,7 @@ public class Platform {
     Platform android = AndroidPlatform.buildIfSupported();
 
     if (android != null) {
+      System.out.println("AndroidPlatform PLATFORM!!!");
       return android;
     }
 
@@ -216,6 +217,7 @@ public class Platform {
       Platform conscrypt = ConscryptPlatform.buildIfSupported();
 
       if (conscrypt != null) {
+          System.out.println("ConscryptPlatform PLATFORM!!!");
         return conscrypt;
       }
     }
@@ -223,15 +225,18 @@ public class Platform {
     Platform jdk9 = Jdk9Platform.buildIfSupported();
 
     if (jdk9 != null) {
+        System.out.println("Jdk9Platform PLATFORM!!!");
       return jdk9;
     }
 
     Platform jdkWithJettyBoot = JdkWithJettyBootPlatform.buildIfSupported();
 
     if (jdkWithJettyBoot != null) {
+        System.out.println("JdkWithJettyBootPlatform PLATFORM!!!");
       return jdkWithJettyBoot;
     }
 
+    System.out.println("NORMAL PLATFORM!!!");
     // Probably an Oracle JDK like OpenJDK.
     return new Platform();
   }

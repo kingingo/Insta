@@ -61,6 +61,30 @@
   </repositories>
   <dependencies>
     <dependency>
+      <groupId>com.google.android</groupId>
+      <artifactId>android</artifactId>
+      <version>2.3.1</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>opengl-api</artifactId>
+          <groupId>org.khronos</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>xmlParserAPIs</artifactId>
+          <groupId>xerces</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>xpp3</artifactId>
+          <groupId>xpp3</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>json</artifactId>
+          <groupId>org.json</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>edge-SNAPSHOT</version>

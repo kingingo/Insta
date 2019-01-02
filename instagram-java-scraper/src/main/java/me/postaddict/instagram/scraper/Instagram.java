@@ -63,12 +63,13 @@ public class Instagram implements AuthenticatedInsta {
 		cookies.removeIf(cookie -> !cookie.name().equals("csrftoken"));
 		if (!cookies.isEmpty()) {
 			Cookie cookie = cookies.get(0);
+			System.out.println("Set-Cookie("+cookies.size()+"): "+cookie.name()+" "+cookie.value());
 			return request.newBuilder().addHeader("X-CSRFToken", cookie.value()).build();
-		} else {
-
-			return request.newBuilder().addHeader("X-CSRFToken", "iP4eaQTT6MxIEyB8rWJ7NzJ4ZHUjwSE5").build();
 		}
-//		return request;
+//		else {
+//			return request.newBuilder().addHeader("X-CSRFToken", "iP4eaQTT6MxIEyB8rWJ7NzJ4ZHUjwSE5").build();
+//		}
+		return request;
 	}
 
 	public Account getAccountInfo() {
@@ -93,7 +94,7 @@ public class Instagram implements AuthenticatedInsta {
 	public void basePage() throws IOException {
 		Request request = new Request.Builder().url(Endpoint.BASE_URL).build();
 
-		Response response = executeHttpRequest(request);
+		Response response = executeHttpRequest(withCsrfToken(request));
 		try (ResponseBody body = response.body()) {
 			// release connection
 		}
