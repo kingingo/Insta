@@ -1,11 +1,7 @@
 package net.insta.server.connection.jobthread;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -16,9 +12,6 @@ import me.postaddict.instagram.scraper.cookie.DefaultCookieJar;
 import me.postaddict.instagram.scraper.exception.InstagramAuthException;
 import me.postaddict.instagram.scraper.interceptor.ErrorInterceptor;
 import me.postaddict.instagram.scraper.interceptor.UserAgentInterceptor;
-import me.postaddict.instagram.scraper.interceptor.UserAgents;
-import me.postaddict.instagram.scraper.model.Account;
-import me.postaddict.instagram.scraper.model.Media;
 import net.insta.base.client.ClientStatus;
 import net.insta.base.encryption.AuthData;
 import net.insta.base.packets.server.ResponsePacket;
@@ -65,7 +58,7 @@ public class InstagramJobThread implements Runnable {
 					.proxy(proxyTest)
 					.addNetworkInterceptor(loggingInterceptor)
 					.addInterceptor(new ErrorInterceptor())
-	                .addInterceptor(new UserAgentInterceptor(UserAgents.ANDROID_7_0))
+	                .addInterceptor(new UserAgentInterceptor(UserAgent.ANDROID_7_0))
 					.cookieJar(new DefaultCookieJar(new CookieHashSet()))
 					.build();
 			

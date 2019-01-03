@@ -115,9 +115,9 @@
 			<version>0.9.10</version>
 		</dependency>
 		<dependency>
-			<groupId>instagramAPI</groupId>
-			<artifactId>instagramAPI</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>instagram-java-scraper</groupId>
+			<artifactId>instagram-java-scraper</artifactId>
+			<version>1.8</version>
 		</dependency>
 	</dependencies>
 </project>
