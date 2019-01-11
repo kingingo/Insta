@@ -186,7 +186,7 @@ public class MainGUI extends Application {
 
 		TableColumn usernameInsta = new TableColumn("Instagram Username:");
 		
-		usernameInsta.setCellValueFactory(new PropertyValueFactory<>("usernameInsta"));
+		usernameInsta.setCellValueFactory(new PropertyValueFactory<>("instaUser"));
 		usernameInsta.setMinWidth(200);
 		
 		TableColumn done = new TableColumn("Done");
