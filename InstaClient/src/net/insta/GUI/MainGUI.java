@@ -1,8 +1,11 @@
 package net.insta.GUI;
 
+import java.io.IOException;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ArrayList;
-
+import javafx.stage.Modality;
 import javafx.application.Application;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
@@ -44,7 +47,10 @@ import javafx.util.Callback;
 import lombok.Getter;
 import net.insta.GUI.user.User;
 import net.insta.base.InstaBase;
+import net.insta.base.event.EventManager;
+import net.insta.base.event.events.client.LoginEvent;
 import net.insta.base.packets.client.instagram.InstagramTestPacket;
+import net.insta.base.packets.server.LoginAnswerPacket;
 import net.insta.base.packets.server.instagram.InstagramAuthDataAnswerPacket;
 import net.insta.base.packets.server.instagram.InstagramTestAnswerPacket;
 import net.insta.client.Main;
@@ -186,7 +192,7 @@ public class MainGUI extends Application {
 
 		TableColumn usernameInsta = new TableColumn("Instagram Username:");
 		
-		usernameInsta.setCellValueFactory(new PropertyValueFactory<>("usernameInsta"));
+		usernameInsta.setCellValueFactory(new PropertyValueFactory<>("instaUser"));
 		usernameInsta.setMinWidth(200);
 		
 		TableColumn done = new TableColumn("Done");
@@ -307,7 +313,7 @@ public class MainGUI extends Application {
 		pane.prefWidthProperty().bind(sc.widthProperty());
 
 		tab.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-		toogleLikeAndComment();
+//		toogleLikeAndComment();
 
 		// Adding Elements to the third Tab
 		// Buttons
@@ -364,7 +370,7 @@ public class MainGUI extends Application {
 					instaLoginBtn.setDisable(true);
 					getMessage().setFill(Color.GREEN);
 					getMessage().setText(packet.getMessage());
-					instance.toogleLikeAndComment();
+//					instance.toogleLikeAndComment();
 
 				} else {
 					getMessage().setFill(Color.FIREBRICK);
@@ -418,7 +424,7 @@ public class MainGUI extends Application {
 				InstaBase.printf("Can't start because the Comment List is Empty!?");
 			} else {
 				InstaBase.printf("Bot Started");
-				toogleLikeAndComment();
+//				toogleLikeAndComment();
 
 				GUIAPI.sendList(false, cloneUserdata(), cloneComments());
 			}
@@ -432,6 +438,64 @@ public class MainGUI extends Application {
 			commentList.getItems().removeAll(commentList.getSelectionModel().getSelectedItems());
 
 		});
+		
+		
+		upload.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent e) {
+
+				 	Label post = new Label("Your Post: ");
+				 	Label caption = new Label("You Caption: ");
+				 	
+				 	Button uploadP = new Button("Upload");
+				 	Button save = new Button("save & schedule");
+				 	
+				 	TextArea cap = new TextArea();
+				 	cap.setMaxWidth(300);
+				 	ImageView image = new ImageView();
+				 	image.setFitHeight(300); 
+				    image.setFitWidth(300);
+				 
+		            GridPane schedule = new GridPane();
+		            schedule.setPadding(new Insets(10, 10, 10, 10));
+		    		schedule.setVgap(5);
+		    		schedule.setHgap(5);
+		        	schedule.setAlignment(Pos.CENTER);
+		        	
+		        	schedule.add(post, 0, 0);
+		        	schedule.add(image, 0, 1);
+		        	schedule.add(upload, 0, 3);
+		        	schedule.add(caption, 1, 0);
+		        	schedule.add(cap, 1, 1);
+		        	schedule.add(save, 1, 3);
+		 
+		            Scene secondScene = new Scene(schedule, 600, 800);
+		 
+		            // New window (Stage)
+		            Stage upload = new Stage();
+		            upload.setTitle("Schedule your posts");
+		            upload.setScene(secondScene);
+		 
+		            // Specifies the modality for new window.
+		            upload.initModality(Modality.WINDOW_MODAL);
+		 
+		            // Specifies the owner Window (parent) for new window
+		            upload.initOwner(stage);
+		
+		            upload.show();
+				
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+			
+		
 
 		// To-Do --> Create a CSS-File
 		URL rc = getClass().getResource("/Login.css");
@@ -507,16 +571,16 @@ public class MainGUI extends Application {
 		return percent;
 	}
 
-	public boolean toogleLikeAndComment() {
-		boolean disable = !this.start.isDisable();
-
-		this.start.setDisable(disable);
-		this.addComment.setDisable(disable);
-		this.deleteComment.setDisable(disable);
-		this.addList.setDisable(disable);
-		this.clearList.setDisable(disable);
-
-		return disable;
-	}
+//	public boolean toogleLikeAndComment() {
+//		boolean disable = !this.start.isDisable();
+//
+//		this.start.setDisable(disable);
+//		this.addComment.setDisable(disable);
+//		this.deleteComment.setDisable(disable);
+//		this.addList.setDisable(disable);
+//		this.clearList.setDisable(disable);
+//
+//		return disable;
+//	}
 
 }

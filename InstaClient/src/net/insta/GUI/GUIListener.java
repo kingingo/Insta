@@ -54,9 +54,9 @@ public class GUIListener implements EventListener {
 				}
 			}
 			
-			if(packet.isDone()) {
-				MainGUI.getInstance().toogleLikeAndComment();
-			}
+//			if(packet.isDone()) {
+//				MainGUI.getInstance().toogleLikeAndComment();
+//			}
 		}
 	}
 }
